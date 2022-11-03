@@ -37,7 +37,7 @@ userSchema
     return this.friends.length;
   });
 
-// Initialize our Application model
+// Initialize our User model
 const User = model('user', userSchema);
 
 module.exports = User;
