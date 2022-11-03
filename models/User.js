@@ -16,12 +16,10 @@ const userSchema = new Schema(
       unique: true, 
 
     },
+    // Array of _id values referencing the Thought model
     thoughts: [Thought],
-    friends: {
-      type: String,
-      minLength: 15,
-      maxLength: 500,
-    },
+    // Array of _id values referencing the User model (self-reference)
+    friends: [],
   },
   {
     toJSON: {
