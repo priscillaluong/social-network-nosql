@@ -1,13 +1,13 @@
 const { Thought, Reaction } = require('../models');
 
 module.exports = {
-  // Get all users
+  // Get all thoughts
   getThoughts(req, res) {
     Thought.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
-  // Get a single user
+  // Get a single thought
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
       .select('-__v')
@@ -18,13 +18,13 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  // create a new user
+  // create a new thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
-// Update a user
+// Update a thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
     { _id: req.params.thoughtId },
