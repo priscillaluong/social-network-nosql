@@ -92,13 +92,13 @@ createReaction(req, res) {
   },
   // Delete a reaction from a thought
   deleteReaction(req, res) {
-    Reaction.findOneAndDelete({ _id: req.params.thoughtId })
+    Thought.findOneAndUpdate({ _id: req.params.thoughtId }), { $pull: { reactions: req.params.reactionId }}
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
-          : Reaction.deleteMany({ _id: { $in: thought.reactions } })
+          : Reaction.findOneAndDelete({ _id: req.params.reactionId })
       )
-      .then(() => res.json({ message: 'Thought and associated reactions deleted!' }))
+      .then(() => res.json({ message: 'Reaction deleted from thought!' }))
       .catch((err) => res.status(500).json(err));
   },
 };
