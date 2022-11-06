@@ -41,8 +41,29 @@ module.exports = {
       res.status(500).json(err);
     });
   },
-  // Delete a user and associated apps
+  // Delete a user and associated thoughts
   deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'No user with that ID' })
+          : Thought.deleteMany({ _id: { $in: user.thoughts } })
+      )
+      .then(() => res.json({ message: 'User and associated thoughts deleted!' }))
+      .catch((err) => res.status(500).json(err));
+  },
+  // add new user to user friends
+  addNewFriend(req, res) {
+    User.findOneAndUpdate({ _id: req.params.userId }, { $push: { friends: req.params.friendId }}, { new: true })
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'Friend not added to list' })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+  // Delete a user's friend
+  deleteFriend(req, res) {
     User.findOneAndDelete({ _id: req.params.userId })
       .then((user) =>
         !user
