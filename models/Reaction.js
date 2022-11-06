@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const moment = require('moment');
 
 // Schema to create Post model
 const reactionSchema = new Schema(
@@ -17,11 +18,9 @@ const reactionSchema = new Schema(
         required: true,
     },
     createdAt: {
-        //Date
-        //Set default value to the current timestamp
-        //Use a getter method to format the timestamp on query
         type: Date,
         default: Date.now,
+        get: moment(Date.now).format('Do MMMM YYYY, h:mm:ss a'),
     },
   },
   {
