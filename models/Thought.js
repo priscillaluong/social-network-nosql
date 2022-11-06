@@ -19,7 +19,9 @@ const thoughtSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        get: moment(Date.now).format('Do MMMM YYYY, h:mm:ss a'),
+        get: function (currentDate) {
+            return moment(currentDate).format('Do MMMM YYYY, h:mm:ss a');
+        },
     },
   },
   {
