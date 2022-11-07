@@ -28,47 +28,48 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ## Required Packages:
 
-* [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages are used to connect Express.js API (for Controllers) to a MySQL database (for Models). 
-* [express-handlebars](https://www.npmjs.com/package/express-handlebars) to use Handlebars.js for the Views. 
-* [dotenv](https://www.npmjs.com/package/dotenv) package enables environment variables to store sensitive data. 
-* [bcrypt](https://www.npmjs.com/package/bcrypt) to hash passwords. 
+* [mongoose](https://www.npmjs.com/package/mongoose) for MongoDB and object modeling.
+* [express](https://www.npmjs.com/package/express) for back-end and routing.
 * [moment](https://www.npmjs.com/package/connect-session-sequelize) to format timestamps.
+* [nodemon](https://www.npmjs.com/package/nodemon) to automatically restart applications when file changes are detected. 
 
 # Screenshots of Application Interaction:
 
-Users are required to sign up and log in to get access to the dashboard, create new posts, comment on/update/delete existing posts. 
+* GET all users:
 
-* Log in page:
+![GET all users](./assets/images/get-all-users.png)
 
-![Deployed Application - Log in page](./assets/images/login.png)
+* POST a new user:
 
-* Once logged in, user is redirected to dashboard where they can view previously created posts, or create a new post:
+![POST a new user](./assets/images/create-user.png)
 
-![Deployed Application - Dashboard](./assets/images/create-btn.png)
+* PUT to update a user by its _id:
 
-* Create a new post:
+![POST a new user](./assets/images/update-user.png)
 
-![Deployed Application - Create New Post](./assets/images/create-new-post.png)
+* GET a single thought by its _id:
 
-![Deployed Application - Created Post](./assets/images/post-created.png)
+![GET a single thought by its _id](./assets/images/get-thought-by-id.png)
 
-* Adding comments to existing posts:
+* PUT to update a thought by its _id:
 
-![Deployed Application - Add New Comment](./assets/images/add-comment.png)
+![PUT to update a thought by its _id](./assets/images/update-thought.png)
 
-![Deployed Application - Comment Added](./assets/images/comment-added.png)
+* DELETE to remove a thought by its _id:
 
-* Editing comments (n.b. users can only edit their own comments and posts):
+![DELETE to remove a thought by its _id](./assets/images/delete-thought.png)
 
-![Deployed Application - Add New Comment](./assets/images/view-other-comments.png)
+* POST to add a new friend to a user's friend list:
 
-![Deployed Application - Comment Added](./assets/images/edit-comment.png)
+![POST to add a new friend to a user's friend list](./assets/images/add-friend.png)
 
-![Deployed Application - Comment Added](./assets/images/edited-comment.png)
+* POST to create a reaction stored in a single thought's reactions array field:
+
+![POST to create a reaction stored in a single thought's reactions array field](./assets/images/create-reaction.png)
 
 # Link to Walkthrough Video:
 
-[Click here](https://salty-savannah-57008.herokuapp.com/)
+[Click here](https://www.youtube.com/watch?v=9dYM0YugvxA&ab_channel=PriscillaLuong)
 
 ### Final note:
 
